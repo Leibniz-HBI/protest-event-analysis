@@ -2,6 +2,16 @@ The project "Protest Event in Local News" automates information extraction for p
 
 This repository provides trained models and prediction scripts.
 
+The model files `pytorch_model.bin` and `optimizer.pt` are not staged to this repository. 
+They can be shared via aws S3 buckets.
+To upload a file use this command:
+
+```
+aws s3 cp models/task-A/pytorch_model.bin s3://pea-fgz-models/task-A/pytorch_model.bin
+```
+
+Caution: uploaded files to this bucket will be public!
+
 # Task A: Relevance Classification
 
 A binary classification task whether ot not an articles conatains a relevant protest event description.
