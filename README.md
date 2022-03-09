@@ -20,11 +20,17 @@ Model: `models/task-A/`
 Training data state: Bremen, Dresden, Leipzig (2022-03-08)
 Performance: ca. F1 = 93 % in-sample, 70.9 % on StZ data
 
-Download the model:
+**Model Download**
 ```
 cd models/task-A
 wget https://pea-fgz-models.s3.eu-central-1.amazonaws.com/task-A/pytorch_model.bin
 ```
+
+**Format Input Data**
+
+As input, a CSV file with ',' as separator, double quote escape strategy and column header is expected. For prediction, the column named `text` is used as input for prediction. The output file is a copy of the input CSV with three additional columns: `pred_label`, `pred_score` and `pred_text`. The latter contains the text after preprocessing that served as input to the classification model.
+
+**Run Prediction**
 
 For prediction, return to the project root directory and run (on the DSC server add `CUDA_VISIBLE_DEVICES=0 srun` before the command):
 
