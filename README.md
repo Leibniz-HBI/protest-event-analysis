@@ -26,7 +26,7 @@ cd models/task-A
 wget https://pea-fgz-models.s3.eu-central-1.amazonaws.com/task-A/pytorch_model.bin
 ```
 
-Prediction (on the DSC server add `CUDA_VISIBLE_DEVICES=0 srun` before the command):
+For prediction, return to the project root directory and run (on the DSC server add `CUDA_VISIBLE_DEVICES=0 srun` before the command):
 
 ```
 python task-A_prediction.py --input_csv ~/unlabeled_data.csv --output_csv ~/predicted_data.csv
