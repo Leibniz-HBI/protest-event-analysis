@@ -39,7 +39,7 @@ if __name__=='__main__':
     if args.n:
         raw_df = raw_df.iloc[:args.n]
 
-    predict_df = reformat_df(raw_df, filter_size=1)["text_a"].tolist()
+    predict_df = reformat_df(raw_df, filter_size=-1)["text_a"].tolist()
     # import pdb; pdb.set_trace()
 
     # start prediction
