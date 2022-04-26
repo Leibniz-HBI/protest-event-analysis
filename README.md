@@ -17,8 +17,8 @@ Caution: uploaded files to this bucket will be public!
 A binary classification task whether ot not an articles conatains a relevant protest event description.
 
 Model: `models/task-A/`
-Training data state: Bremen, Dresden, Leipzig (2022-03-08)
-Performance: ca. F1 = 93 % in-sample, 70.9 % on StZ data
+Training data state: Bremen, Dresden, Leipzig, Stuttgart (2022-04-26)
+Performance: ca. F1 = 91 % in-sample dev, mcc = 82 % in-sample dev
 
 **Model Download**
 ```
