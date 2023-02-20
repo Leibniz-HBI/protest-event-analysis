@@ -38,6 +38,34 @@ For prediction, return to the project root directory and run (on the DSC server 
 python task-A_prediction.py --input_csv ~/unlabeled_data.csv --output_csv ~/predicted_data.csv
 ```
 
-# Task B: Section identification
+# Task B and C: Section identification and protest variable spans
 
-A binary sentence classification whether or not a sentence contains relevant protest event information. 
+A sequence tagging task to predict sentences containing relevant information for protest events (Task B, tagset ["PROTEST", "NONE"] and protest variables (Task C, tagset [CLAIM, FORM, TRAEGER, ZAHL, DATUM, NONE]).
+
+Both tasks are tagged separately. Thus, tokens not tagged as PROTEST still may, for example, be tagged as ZAHL.
+
+Model: Flair MultiTask `models/task-B-C/best-model.pt`
+Training data state: 607 gold documents from manual annotation (2022-04-01)
+Performance: 
+- ca. F1 = 71 % in-sample test for PROTEST tags (positive class), 80 % macro-F1
+- ca. F1 = 62,5 % in-sample test for [CLAIM, FORM, TRAEGER, ZAHL, DATUM, NONE] (macro-avg)
+
+**Model Download**
+```
+cd models/task-B-C
+wget https://pea-fgz-models.s3.eu-central-1.amazonaws.com/task-B-C/pytorch_model.bin
+```
+
+**Format Input Data**
+
+As input, a CSV file with ',' as separator, double quote escape strategy and column header is expected. For prediction, the column `doc_id` is used to keep alignment of tokens to documents, and the column `text` is used as input for prediction. It makes sense, to only input documents classified as relevant in Task A.
+
+The output file is a CoNLL-like format with tokens in rows and their predictions in colums.
+
+**Run Prediction**
+
+For prediction, return to the project root directory and run (on the DSC server add `CUDA_VISIBLE_DEVICES=0 srun` before the command):
+
+```
+python task-B-C_prediction.py --input_csv ~/unlabeled_data.csv --output_csv ~/predicted_data.csv
+```

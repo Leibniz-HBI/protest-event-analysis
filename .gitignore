@@ -153,5 +153,7 @@ cython_debug/
 
 pytorch_model.bin
 optimizer.pt
+best-model.pt
 
 models/deprecated/
+tmp_predict_corpus/
