@@ -53,7 +53,7 @@ Performance:
 **Model Download**
 ```
 cd models/task-B-C
-wget https://pea-fgz-models.s3.eu-central-1.amazonaws.com/task-B-C/best-model.bin
+wget https://pea-fgz-models.s3.eu-central-1.amazonaws.com/task-B-C/best-model.pt
 ```
 
 **Format Input Data**
