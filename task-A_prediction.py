@@ -45,8 +45,9 @@ if __name__=='__main__':
     # start prediction
     model_type = "bert"
     model_dir = "models/task-A/"
+    model_args = {"use_multiprocessing": False, "use_multiprocessing_for_evaluation": False}
 
-    model = ClassificationModel(model_type, model_dir)
+    model = ClassificationModel(model_type, model_dir, args = model_args)
     predictions, raw_outputs = model.predict(predict_df)
 
     class_probs = scipy.special.softmax(raw_outputs, axis = -1)
